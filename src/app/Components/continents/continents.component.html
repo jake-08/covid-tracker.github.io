@@ -1,0 +1,82 @@
+<div class="container px-4 pt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-4 col-sm-12">
+            <input class="form-control shadow-none" type="text" [(ngModel)]="filterBy" placeholder="filterBy Continent" (keyup)="filter()">
+        </div>
+    </div>
+    <div class="d-flex justify-content-center mt-2" *ngIf="isLoading">
+        <app-loading-spinner></app-loading-spinner>
+    </div>
+</div>
+<div class="mb-4" *ngFor="let data of filteredContinentsData">
+    <div class="text-center p-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 bg-success text-white">
+                    <h2 class="py-2 text-uppercase">{{ data.continent }}</h2>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-sm-12">
+                    <p>Last Updated: {{ todayDate | date:'dd/MM/yyyy hh:mm a'}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center px-4 py-2">
+        <div class="container">
+            <div class="row g-4">
+              <div class="col-md">
+                <div class="container border bg-light">
+                    <div class="row">
+                        <div class="col-sm bg-secondary text-white p-1">
+                            <h4 class="p-2">Daily {{ data.continent }} Continent Cases</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm fs-5 p-3">
+                            <p class="m-0">Today Infected Patients</p>
+                            <p class="fw-bold text-warning">{{ data.todayCases | number: '0.0-0' }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 p-3 fs-5 border">
+                            <p class="m-0">New Recovered</p>
+                            <p class="fw-bold text-success">{{ data.todayRecovered | number: '0.0-0' }}</p>
+                        </div>
+                        <div class="col-6 p-3 fs-5 border">
+                            <p class="m-0">New Deaths</p>
+                            <p class="fw-bold text-danger">{{ data.todayDeaths | number: '0.0-0' }}</p>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="container border bg-light">
+                    <div class="row">
+                        <div class="col-sm bg-secondary text-white p-1">
+                            <h4 class="p-2">Total {{ data.continent }} Cases</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm fs-5 p-3">
+                            <p class="m-0">Total Infected Patients</p>
+                            <p class="fw-bold text-warning">{{ data.cases | number: '0.0-0' }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 p-3 fs-5 border">
+                            <p class="m-0">Total Recovered</p>
+                            <p class="fw-bold text-success">{{ data.recovered | number: '0.0-0' }}</p>
+                        </div>
+                        <div class="col-6 p-3 fs-5 border">
+                            <p class="m-0">Total Deaths</p>
+                            <p class="fw-bold text-danger">{{ data.deaths | number: '0.0-0' }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

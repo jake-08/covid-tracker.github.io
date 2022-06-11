@@ -1,0 +1,70 @@
+<div class="text-center p-4 pb-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 bg-success text-white">
+                <h2 class="py-2 text-uppercase">Covid-19 Global Records</h2>
+            </div>
+        </div>
+        <div class="row mt-1">
+            <div class="col-sm-12">
+                <p>Last Updated: {{ todayDate | date:'dd/MM/yyyy hh:mm a'}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="text-center p-4">
+    <div class="container">
+        <div class="row g-4">
+          <div class="col-md">
+            <div class="container border bg-light">
+                <div class="row">
+                    <div class="col-sm bg-secondary text-white p-1">
+                        <h4 class="p-2">Daily Global Cases</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm fs-5 p-3">
+                        <p class="m-0">Today Infected Patients</p>
+                        <p class="fw-bold text-warning">{{ loadedGlobalData.todayCases | number: '0.0-0' }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 p-3 fs-5 border">
+                        <p class="m-0">New Recovered</p>
+                        <p class="fw-bold text-success">{{ loadedGlobalData.todayRecovered | number: '0.0-0' }}</p>
+                    </div>
+                    <div class="col-6 p-3 fs-5 border">
+                        <p class="m-0">New Deaths</p>
+                        <p class="fw-bold text-danger">{{ loadedGlobalData.todayDeaths | number: '0.0-0' }}</p>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="container border bg-light">
+                <div class="row">
+                    <div class="col-sm bg-secondary text-white p-1">
+                        <h4 class="p-2">Total Global Cases</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm fs-5 p-3">
+                        <p class="m-0">Total Infected Patients</p>
+                        <p class="fw-bold text-warning">{{ loadedGlobalData.cases | number: '0.0-0' }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 p-3 fs-5 border">
+                        <p class="m-0">Total Recovered</p>
+                        <p class="fw-bold text-success">{{ loadedGlobalData.recovered | number: '0.0-0'}}</p>
+                    </div>
+                    <div class="col-6 p-3 fs-5 border">
+                        <p class="m-0">Total Deaths</p>
+                        <p class="fw-bold text-danger">{{ loadedGlobalData.deaths | number: '0.0-0'}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <app-charts></app-charts>
+    </div>
+</div>

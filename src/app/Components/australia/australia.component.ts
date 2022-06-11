@@ -46,10 +46,14 @@ export class AustraliaComponent implements OnInit {
             } else {
               break;
             }
+            console.log(dataDate)
           }
           // Sort the Array By State for Easier Calculation
           this.todayTotalCase.sort((a: any,b: any) => a.Province.localeCompare(b.Province))
           this.yesterdayTotalCase.sort((a: any,b: any) => a.Province.localeCompare(b.Province))
+
+          console.log(todayDate);
+          console.log(yesterdayDate);
           
           // Loop and get today case only
           for (let i = 0; i < this.todayTotalCase.length; i++) {

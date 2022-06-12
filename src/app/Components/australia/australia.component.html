@@ -97,7 +97,7 @@
                 <div *ngIf="isLoading">
                     <app-loading-spinner></app-loading-spinner>
                 </div>
-                <p class="text-danger fw-bold" *ngIf="todayCase.length < 1 && !isLoading">The API has not updated for today data yet! <br> Please come back later! 😊</p>
+                <p class="text-danger fw-bold" *ngIf="todayCase.length < 1 && !isLoading">The API has not updated the data for today yet! <br> Please come back later! 😊</p>
                 <div class="col-md-6 " *ngFor="let data of filteredTodayCase">
                     <div class="container border bg-light">
                         <div class="row">

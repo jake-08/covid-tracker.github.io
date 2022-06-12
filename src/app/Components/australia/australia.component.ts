@@ -36,6 +36,7 @@ export class AustraliaComponent implements OnInit {
           // Get Today and Yesterday Date
           let todayDate = (new Date()).toDateString();
           let yesterdayDate = ( d => new Date(d.setDate(d.getDate()-1)) )(new Date).toDateString();
+
           // Get Today and Yesterday Data
           for (let i = australiaDataByState.length - 1; i >= 0; i--) {
             let dataDate = new Date(australiaDataByState[i]['Date']).toDateString();
@@ -46,14 +47,11 @@ export class AustraliaComponent implements OnInit {
             } else {
               break;
             }
-            console.log(dataDate)
           }
+
           // Sort the Array By State for Easier Calculation
           this.todayTotalCase.sort((a: any,b: any) => a.Province.localeCompare(b.Province))
           this.yesterdayTotalCase.sort((a: any,b: any) => a.Province.localeCompare(b.Province))
-
-          console.log(todayDate);
-          console.log(yesterdayDate);
           
           // Loop and get today case only
           for (let i = 0; i < this.todayTotalCase.length; i++) {
@@ -64,6 +62,7 @@ export class AustraliaComponent implements OnInit {
             todayDetail.Province = this.todayTotalCase[i]['Province'];
             this.todayCase.push(todayDetail);
           }
+          
           this.filteredTodayCase = this.todayCase;
           this.isLoading = false;
         }

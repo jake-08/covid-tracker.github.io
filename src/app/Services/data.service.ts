@@ -7,42 +7,49 @@ import { GlobalGraphData } from '../Model/global-graph';
 
 @Injectable({ providedIn: 'root' })
 export class DataService {
-
   constructor(private http: HttpClient) {}
 
   fetchGlobalData(): Observable<CovidData> {
-    return this.http.get<CovidData>('https://disease.sh/v3/covid-19/all')
+    return this.http.get<CovidData>('https://disease.sh/v3/covid-19/all');
   }
 
   fetchContinentData(): Observable<CovidData[]> {
-    return this.http.get<CovidData[]>('https://disease.sh/v3/covid-19/continents');
+    return this.http.get<CovidData[]>(
+      'https://disease.sh/v3/covid-19/continents'
+    );
   }
 
   fetchCountryFlag(): Observable<any> {
-    return this.http
-      .get<any>('https://disease.sh/v3/covid-19/countries')
-      .pipe(
-        map(responseData => responseData
-          .map((countries: any) => ({
-            countryFlag: countries.countryInfo.flag,
-          }))
-        )
-      );
+    return this.http.get<any>('https://disease.sh/v3/covid-19/countries').pipe(
+      map((responseData) =>
+        responseData.map((countries: any) => ({
+          countryFlag: countries.countryInfo.flag,
+        }))
+      )
+    );
   }
 
   fetchCountryData(): Observable<CovidData[]> {
-    return this.http.get<CovidData[]>('https://disease.sh/v3/covid-19/countries');
+    return this.http.get<CovidData[]>(
+      'https://disease.sh/v3/covid-19/countries'
+    );
   }
 
   fetchAustraliaData(): Observable<CovidData> {
-    return this.http.get<CovidData>('https://disease.sh/v3/covid-19/countries/Australia');
+    return this.http.get<CovidData>(
+      'https://disease.sh/v3/covid-19/countries/Australia'
+    );
   }
 
   fetchAustraliaDataByState(): Observable<CountryDetail[]> {
-    return this.http.get<CountryDetail[]>('https://api.covid19api.com/live/country/au');
+    return this.http.get<CountryDetail[]>(
+      'https://api.covid19api.com/live/country/au'
+    );
   }
 
   fetchGlobalDataLast30Days(): Observable<GlobalGraphData> {
-    return this.http.get<GlobalGraphData>('https://disease.sh/v3/covid-19/historical/all?lastdays=30');
+    return this.http.get<GlobalGraphData>(
+      'https://disease.sh/v3/covid-19/historical/all?lastdays=30'
+    );
   }
 }
